@@ -1,0 +1,31 @@
+#include <stdio.h>
+int isLeapYear(int year) {
+    if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+        return 1;
+    else
+        return 0;
+}
+int totalDaysBeforeYear(int year) {
+    int days = 0;
+    for (int y = 1; y < year; y++) {
+        days += isLeapYear(y) ? 366 : 365;
+    }
+    return days;
+}
+int main() {
+    int year;
+    printf("Enter the year: ");
+    scanf("%d", &year);
+    if (year < 1) {
+        printf("Invalid year! Year must be >= 1.\n");
+        return 1;
+    }
+    char *daysOfWeek[] = {
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    };
+    int daysBefore = totalDaysBeforeYear(year);
+    int dayIndex = daysBefore % 7;
+
+    printf("1st January of year %d is a %s.\n", year, daysOfWeek[dayIndex]);
+    return 0;
+}
