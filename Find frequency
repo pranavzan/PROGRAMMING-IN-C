@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    int arr[100];
+    int n, i, number, frequency = 0;
+
+    // Read number of elements
+    printf("Enter the number of elements (max 100): ");
+    scanf("%d", &n);
+
+    if (n < 1 || n > 100) {
+        printf("Invalid number of elements. Must be between 1 and 100.\n");
+        return 1;
+    }
+
+    // Read the elements
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Read the number to find frequency
+    printf("Enter the number to find its frequency: ");
+    scanf("%d", &number);
+
+    // Count frequency
+    for (i = 0; i < n; i++) {
+        if (arr[i] == number) {
+            frequency++;
+        }
+    }
+
+    // Output result
+    printf("The number %d appears %d time(s) in the list.\n", number, frequency);
+
+    return 0;
+}
