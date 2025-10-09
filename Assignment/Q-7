@@ -1,0 +1,40 @@
+#include <stdio.h>
+long long FIBO(int num) {
+    if (num < 0) {
+        return -1;
+    }
+    if (num == 0) {
+        return 0;
+    }
+    if (num == 1) {
+        return 1;
+    }
+    return FIBO(num - 1) + FIBO(num - 2);
+}
+int main() {
+    int num;
+    printf("=== Recursive Fibonacci Sequence Generator ===\n\n");
+    printf("This program generates the Fibonacci sequence up to the num-th term\n");
+    printf("by invoking the recursive function FIBO(num) for each term from 0 to num.\n");
+    printf("FIBO is defined recursively: F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2).\n");
+    printf("Note: Recursive implementation is exponential time O(2^n), suitable only for small num (<=40).\n");
+    printf("Uses long long to handle larger values (up to ~F(92) before overflow).\n\n");
+    printf("Enter the number of terms (num >= 0): ");
+    scanf("%d", &num);
+    if (num < 0) {
+        printf("Invalid input: num must be non-negative.\n");
+    } else {
+        printf("Fibonacci sequence up to the %d-th term:\n", num);
+        for (int i = 0; i <= num; i++) {
+            long long term = FIBO(i);
+            if (term == -1) {
+                printf("ERR ");
+            } else {
+                printf("%lld ", term);
+            }
+        }
+        printf("\n");
+    }
+    printf("\n=== End of Program ===\n");
+    return 0;
+}
