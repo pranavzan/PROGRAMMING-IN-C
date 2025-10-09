@@ -1,0 +1,64 @@
+#include <stdio.h>
+long long FACT(int num) {
+    if (num < 0) {
+        return -1;
+    }
+    if (num == 0 || num == 1) {
+        return 1;
+    }
+    long long result = 1;
+    for (int i = 2; i <= num; i++) {
+        result *= i;
+    }
+    return result;
+}
+long long binomialCoefficient(int n, int r) {
+    if (r < 0 || r > n) {
+        return 0;
+    }
+    long long num = FACT(n);
+    long long den1 = FACT(r);
+    long long den2 = FACT(n - r);
+    if (den1 == -1 || den2 == -1) {
+        return -1;
+    }
+    return num / (den1 * den2);
+}
+int main() {
+    printf("=== Binomial Coefficient Computation using Non-Recursive Factorial ===\n\n");
+    printf("This program computes C(n, r) = n! / (r! * (n-r)!) for various n and r.\n");
+    printf("Factorial is computed iteratively (non-recursively) to avoid stack overflow.\n");
+    printf("Note: Results use long long to handle larger values, but overflow may occur for n > 20.\n\n");
+    printf("Binomial Coefficients Table (C(n, r) for r = 0 to n):\n");
+    printf("n\\r\t");
+    for (int r = 0; r <= 10; r++) {
+        printf("%d\t", r);
+    }
+    printf("\n");
+    printf("----\t");
+    for (int r = 0; r <= 10; r++) {
+        printf("----\t");
+    }
+    printf("\n");
+    for (int n = 0; n <= 10; n++) {
+        printf("%d\t", n);
+        for (int r = 0; r <= 10; r++) {
+            long long coeff = binomialCoefficient(n, r);
+            if (coeff == -1) {
+                printf("ERR\t");
+            } else {
+                printf("%lld\t", coeff);
+            }
+        }
+        printf("\n");
+    }
+    printf("\n=== Verification Examples ===\n");
+    printf("C(5, 2) = %lld (should be 10)\n", binomialCoefficient(5, 2));
+    printf("C(5, 3) = %lld (should be 10)\n", binomialCoefficient(5, 3));
+    printf("C(0, 0) = %lld (should be 1)\n", binomialCoefficient(0, 0));
+    printf("C(10, 5) = %lld (should be 252)\n", binomialCoefficient(10, 5));
+    printf("C(5, 6) = %lld (should be 0, since r > n)\n", binomialCoefficient(5, 6));
+    printf("\n=== End of Program ===\n");
+    
+    return 0;
+}
