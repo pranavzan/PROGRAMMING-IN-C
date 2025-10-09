@@ -1,0 +1,14 @@
+#include <stdio.h>
+int globalVar = 100;
+void demoFunction() {
+    int localVar = 50;
+    printf("Inside demoFunction: Global variable value = %d\n", globalVar);
+    printf("Inside demoFunction: Local variable value = %d\n", localVar);
+}
+int main() {
+    printf("Before calling demoFunction: Global variable value = %d\n", globalVar);
+    
+    demoFunction();
+        printf("After calling demoFunction: Global variable value = %d\n", globalVar);
+    return 0;
+}
