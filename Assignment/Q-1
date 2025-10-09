@@ -1,0 +1,22 @@
+#include <stdio.h>
+int globalVar = 10;
+void function1() {
+    printf("In function1: Global variable value is %d\n", globalVar);
+}
+void function2() {
+    globalVar = 20;
+    printf("In function2: Global variable modified to %d\n", globalVar);
+}
+void function3() {
+    int result = globalVar * 2;
+    printf("In function3: Calculation result (globalVar * 2) = %d\n", result);
+}
+int main() {
+    printf("Initial global variable value in main: %d\n", globalVar);
+    
+    function1();
+    function2();
+    function3();
+    printf("Final global variable value in main: %d\n", globalVar);
+    return 0;
+}
