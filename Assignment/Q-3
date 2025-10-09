@@ -1,0 +1,33 @@
+#include <stdio.h>
+int main() {
+    printf("=== Block Scope Demonstration in C ===\n\n");
+    {
+        int block1Var = 10;
+        printf("Inside Block 1: block1Var = %d\n", block1Var);
+        {
+            int innerBlock1Var = 20;
+            int sharedBlockVar = 15;
+            printf("  Inside Nested Block 1.1: innerBlock1Var = %d\n", innerBlock1Var);
+            printf("  Inside Nested Block 1.1: block1Var (from outer block) = %d\n", block1Var);
+            printf("  Inside Nested Block 1.1: sharedBlockVar = %d\n", sharedBlockVar);
+        }
+        printf("Back in Block 1: block1Var = %d\n", block1Var);
+    }
+    printf("\nBack in main(): block1Var is no longer accessible.\n");
+    {
+        int block2Var = 30;
+        printf("\nInside Block 2: block2Var = %d\n", block2Var);
+        {
+            if (1) {
+                int conditionalVar = 40;
+                printf("  Inside Nested Block 2.1 (if-block): conditionalVar = %d\n", conditionalVar);
+                printf("  Inside Nested Block 2.1: block2Var (from outer) = %d\n", block2Var);
+            }
+            printf("  Back in Nested Block 2.1 (after if): block2Var = %d\n", block2Var);
+        }
+        printf("Back in Block 2: block2Var = %d\n", block2Var);
+    }
+    printf("\nBack in main(): Block 2 variables are no longer accessible.\n");
+    printf("\n=== End of Block Scope Test ===\n");
+    return 0;
+}
