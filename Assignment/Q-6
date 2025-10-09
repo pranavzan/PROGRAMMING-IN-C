@@ -1,0 +1,37 @@
+#include <stdio.h>
+void FIBO(int num) {
+    if (num < 0) {
+        printf("Invalid input: num must be non-negative.\n");
+        return;
+    }
+    if (num == 0) {
+        printf("Fibonacci sequence up to 0 terms: (empty)\n");
+        return;
+    }
+    printf("Fibonacci sequence up to the %d-th term:\n", num);
+    long long a = 0, b = 1;
+    printf("%lld ", a);
+    if (num >= 1) {
+        printf("%lld ", b);
+    }
+    for (int i = 2; i <= num; i++) {
+        long long next = a + b;
+        printf("%lld ", next);
+        a = b;
+        b = next;
+    }
+    printf("\n");
+}
+int main() {
+    int num;
+    printf("=== Non-Recursive Fibonacci Sequence Generator ===\n\n");
+    printf("This program generates the Fibonacci sequence up to the num-th term\n");
+    printf("using an iterative (non-recursive) function FIBO(num).\n");
+    printf("Note: Uses long long to handle larger values (up to ~num=92 before overflow).\n\n");
+    
+    printf("Enter the number of terms (num >= 0): ");
+    scanf("%d", &num);
+    FIBO(num);
+    printf("\n=== End of Program ===\n");
+    return 0;
+}
