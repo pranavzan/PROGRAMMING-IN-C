@@ -1,0 +1,15 @@
+#include <stdio.h>
+void modifyValues(int *x, float *y, char *z) {
+    *x += 5;    
+    *y += 2.5;  
+    *z = 'Z';   
+}
+int main() {
+    int a = 10;
+    float b = 3.5;
+    char c = 'A';
+    printf("Before modification: a = %d, b = %.2f, c = %c\n", a, b, c);
+    modifyValues(&a, &b, &c);
+    printf("After modification:  a = %d, b = %.2f, c = %c\n", a, b, c);
+    return 0;
+}
